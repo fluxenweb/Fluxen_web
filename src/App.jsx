@@ -28,6 +28,7 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  
   return (
     <>
       <a className="skip-link" href="#main">
