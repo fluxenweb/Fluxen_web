@@ -1,0 +1,109 @@
+.section {
+  padding-block: var(--section-pad);
+  border-top: 1px solid var(--line);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 56px;
+  align-items: end;
+}
+
+.title {
+  grid-column: 1 / span 8;
+}
+
+.indent {
+  display: block;
+  padding-left: calc(100% / 8 * 3);
+}
+
+.field {
+  grid-column: 9 / span 4;
+  padding-bottom: 0.4em;
+}
+
+.bottom {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 48px;
+  margin-top: clamp(64px, 9vw, 140px);
+}
+
+.copy {
+  grid-column: 1 / span 5;
+  display: grid;
+  align-content: start;
+  gap: 24px;
+}
+
+.lead {
+  font-size: clamp(22px, 2.1vw, 32px);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  max-width: 26ch;
+}
+
+.body {
+  color: var(--muted);
+  max-width: 46ch;
+}
+
+.spec {
+  grid-column: 7 / span 6;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) 2.4fr;
+  column-gap: var(--col-gap);
+  padding-bottom: 22px;
+}
+
+.specRow :global(.rule) {
+  grid-column: 1 / -1;
+  margin-bottom: 18px;
+}
+
+.specKey {
+  color: var(--muted);
+  padding-top: 4px;
+}
+
+.specVal {
+  font-size: 17px;
+  line-height: 1.45;
+  max-width: 46ch;
+}
+
+@media (max-width: 1024px) {
+  .title,
+  .field,
+  .copy,
+  .spec {
+    grid-column: 1 / -1;
+  }
+
+  .field {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 760px) {
+  .top,
+  .bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .indent {
+    padding-left: 30vw;
+  }
+
+  .specRow {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+}

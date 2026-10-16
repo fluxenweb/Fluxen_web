@@ -1,0 +1,28 @@
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--fg);
+  line-height: 1;
+}
+
+.mark {
+  width: 30px;
+  height: auto;
+  overflow: visible;
+  transition:
+    transform 0.7s var(--ease-out),
+    filter 0.7s var(--ease-out);
+}
+
+.type {
+  width: 96px;
+  height: auto;
+  overflow: visible;
+}
+
+a:hover .mark,
+a:focus-visible .mark {
+  transform: translateX(2px) skewX(-6deg);
+  filter: drop-shadow(0 0 10px rgba(91, 92, 255, 0.7));
+}

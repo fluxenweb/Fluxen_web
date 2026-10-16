@@ -1,0 +1,273 @@
+.footer {
+  position: relative;
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 48px;
+  padding-block: clamp(56px, 7vw, 96px);
+}
+
+.statement {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.big {
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.small {
+  color: var(--muted);
+  max-width: 38ch;
+  font-size: 15px;
+}
+
+.col {
+  grid-column: span 2;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.col:last-child {
+  grid-column: span 3;
+}
+
+.col ul {
+  display: grid;
+  gap: 4px;
+}
+
+.colTitle {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 1px no-repeat;
+  transition:
+    background-size 0.5s var(--ease-out),
+    color 0.3s;
+}
+
+.link:hover {
+  background-size: 100% 1px;
+  color: var(--fg);
+}
+
+.mail {
+  justify-self: start;
+  overflow-wrap: anywhere;
+}
+
+.top_btn {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  min-height: 44px;
+}
+
+.topIcon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line-strong);
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    transform 0.5s var(--ease-out);
+}
+
+.top_btn:hover .topIcon {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+  transform: translateY(-4px);
+}
+
+/* Giant logo lockup */
+.markWrap {
+  position: relative;
+  padding: 24px var(--gutter) clamp(28px, 4vw, 56px);
+}
+
+.mark {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 48px);
+}
+
+.bigMark {
+  flex: none;
+  width: clamp(72px, 15vw, 260px);
+  height: auto;
+  opacity: 0;
+  transform: translateX(-12%) skewX(-8deg);
+  transition:
+    opacity 1.2s var(--ease-out),
+    transform 1.4s var(--ease-out),
+    filter 1.2s var(--ease-out);
+}
+
+:global(.is-in) .bigMark {
+  opacity: 1;
+  transform: none;
+}
+
+.footer[data-end] .bigMark {
+  filter: drop-shadow(0 0 28px rgba(91, 92, 255, 0.65));
+}
+
+.typeCol {
+  flex: 1;
+  display: grid;
+  gap: clamp(10px, 1.6vw, 24px);
+  min-width: 0;
+}
+
+.bigType {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--fg);
+}
+
+.letter {
+  transform-box: fill-box;
+  transform: translateY(40%);
+  opacity: 0;
+  transition:
+    transform 1.3s var(--ease-out),
+    opacity 1s var(--ease-out),
+    color 0.5s;
+  transition-delay: calc(var(--i) * 70ms + 150ms);
+}
+
+:global(.is-in) .letter {
+  transform: none;
+  opacity: 1;
+}
+
+.studio {
+  justify-self: end;
+  color: var(--silver);
+  font-size: clamp(11px, 1.3vw, 18px);
+  letter-spacing: 0.6em;
+  margin-right: -0.6em;
+}
+
+.secret {
+  position: absolute;
+  left: var(--gutter);
+  top: -6px;
+  color: var(--accent-bright);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out);
+}
+
+.footer[data-end] .secret {
+  opacity: 1;
+  transform: none;
+}
+
+.bottom {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-block: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  background: var(--bg);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.statusDot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-ring 2s var(--ease-out) infinite;
+}
+
+.clock {
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1024px) {
+  .statement {
+    grid-column: 1 / -1;
+  }
+
+  .col,
+  .col:last-child {
+    grid-column: span 4;
+  }
+}
+
+@media (max-width: 760px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .col,
+  .col:last-child {
+    grid-column: span 1;
+  }
+
+  .col:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .secret {
+    position: static;
+    margin-bottom: 20px;
+    text-transform: none;
+  }
+
+  .studio {
+    letter-spacing: 0.4em;
+    margin-right: -0.4em;
+  }
+
+  .bottom {
+    flex-direction: column;
+  }
+}

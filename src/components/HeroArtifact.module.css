@@ -1,0 +1,33 @@
+.artifact {
+  position: absolute;
+  inset: 0;
+}
+
+.canvas,
+.fallback {
+  position: absolute;
+  inset: 0;
+  transition: opacity 1.2s var(--ease-out);
+}
+
+.canvas {
+  opacity: 0;
+}
+
+.fallback {
+  display: grid;
+  place-items: center;
+}
+
+.fallbackSvg {
+  width: 72%;
+  height: auto;
+}
+
+.artifact[data-status='ready'] .canvas {
+  opacity: 1;
+}
+
+.artifact[data-status='ready'] .fallback {
+  opacity: 0;
+}

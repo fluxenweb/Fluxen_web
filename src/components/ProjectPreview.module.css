@@ -1,0 +1,489 @@
+.preview {
+  position: absolute;
+  inset: 0;
+  container-type: inline-size;
+  overflow: hidden;
+}
+
+.preview > div {
+  position: absolute;
+  inset: 0;
+}
+
+/* Hover hooks: the card adds the global `project-card` class */
+:global(.project-card) {
+  --cx: 50%;
+  --cy: 50%;
+  --lx: 0;
+}
+
+/* ═════ VANTA ═════ */
+.vanta {
+  background: #e7e2d8;
+}
+
+.vantaLayer {
+  position: absolute;
+  inset: 0;
+  background: #e7e2d8;
+  color: #121110;
+  --arch-a: #7a1f1f;
+  --arch-b: #121110;
+}
+
+.vantaAlt {
+  background: #121110;
+  color: #e7e2d8;
+  --arch-a: #c9a77c;
+  --arch-b: #e7e2d8;
+}
+
+.vantaWord {
+  position: absolute;
+  left: -1.5cqw;
+  bottom: -6.5cqw;
+  font-size: 34cqw;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+}
+
+.arch {
+  position: absolute;
+  bottom: 22cqw;
+  border-radius: 999px 999px 0 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 2.4cqw, rgba(0, 0, 0, 0.12) 2.4cqw 2.6cqw),
+    var(--arch-a);
+  transition: transform 1.2s var(--ease-out);
+}
+
+.archA {
+  left: 14cqw;
+  width: 30cqw;
+  height: 78cqw;
+}
+
+.archB {
+  left: 50cqw;
+  width: 22cqw;
+  height: 58cqw;
+  background: var(--arch-b);
+}
+
+.vantaSeason {
+  position: absolute;
+  top: 10cqw;
+  left: 5cqw;
+  font-family: var(--font-mono);
+  font-size: max(9px, 1.9cqw);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.vantaTag {
+  position: absolute;
+  top: 10cqw;
+  right: 5cqw;
+  display: grid;
+  gap: 1.4cqw;
+  width: 34cqw;
+  padding: 3cqw;
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  font-size: max(9px, 2.2cqw);
+}
+
+.vantaTagName {
+  font-weight: 500;
+}
+
+.vantaSwatches {
+  display: flex;
+  gap: 1.2cqw;
+}
+
+.vantaSwatches i {
+  width: 3cqw;
+  height: 3cqw;
+  border-radius: 50%;
+  background: var(--arch-a);
+}
+
+.vantaSwatches i:nth-child(2) {
+  background: var(--arch-b);
+}
+
+.vantaSwatches i:nth-child(3) {
+  background: #8b8f87;
+}
+
+.vantaTagPrice {
+  font-family: var(--font-mono);
+}
+
+.vantaTagBtn {
+  padding: 1.6cqw;
+  text-align: center;
+  background: currentColor;
+}
+
+.vantaTagBtn {
+  color: inherit;
+}
+
+.vantaLayer .vantaTagBtn {
+  background: #121110;
+  color: #e7e2d8;
+}
+
+.vantaAlt .vantaTagBtn {
+  background: #e7e2d8;
+  color: #121110;
+}
+
+.vantaReveal {
+  position: absolute;
+  inset: 0;
+  clip-path: circle(0% at var(--cx) var(--cy));
+  transition: clip-path 0.9s var(--ease-out);
+}
+
+:global(.project-card):hover .vantaReveal,
+:global(.project-card):focus-within .vantaReveal {
+  clip-path: circle(150% at var(--cx) var(--cy));
+}
+
+:global(.project-card):hover .archA {
+  transform: translateY(-2cqw);
+}
+
+/* ═════ ORBIT ═════ */
+.orbit {
+  background: #0e6b52;
+  color: #ecf7f0;
+}
+
+.orbitSvg {
+  position: absolute;
+  overflow: visible;
+  inset: -10% -25% -10% -5%;
+  width: 130%;
+  height: 120%;
+  max-width: none;
+}
+
+.rings {
+  transform-origin: 300px 300px;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.ringGroup {
+  transform-origin: 300px 300px;
+  animation: spin var(--d) linear infinite;
+  animation-direction: normal;
+}
+
+.ringGroup:nth-child(even) {
+  animation-direction: reverse;
+}
+
+:global(.project-card):hover .rings {
+  transform: scale(1.12) rotate(-12deg);
+}
+
+.orbitWord {
+  position: absolute;
+  top: 10cqw;
+  left: 6cqw;
+  font-size: 9cqw;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.orbitPanel {
+  position: absolute;
+  left: 6cqw;
+  right: 6cqw;
+  bottom: 6cqw;
+  display: grid;
+  gap: 2.6cqw;
+  padding: 4.4cqw;
+  background: #ecf7f0;
+  color: #083a2c;
+  font-size: max(9px, 3.1cqw);
+  transform: translateY(8cqw);
+  opacity: 0.94;
+  transition: transform 0.9s var(--ease-out);
+}
+
+:global(.project-card):hover .orbitPanel,
+:global(.project-card):focus-within .orbitPanel {
+  transform: none;
+}
+
+.orbitPanelHead {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: max(8px, 2.5cqw);
+  color: #0e6b52;
+}
+
+.orbitRow {
+  display: grid;
+  grid-template-columns: 26cqw 1fr auto;
+  align-items: center;
+  gap: 3cqw;
+  font-variant-numeric: tabular-nums;
+}
+
+.orbitTrack {
+  position: relative;
+  height: 1px;
+  background: rgba(8, 58, 44, 0.3);
+}
+
+.orbitTrack i {
+  position: absolute;
+  top: -1.2cqw;
+  width: 12cqw;
+  height: 2.4cqw;
+  background: #0e6b52;
+  transition: transform 1s var(--ease-out);
+}
+
+:global(.project-card):hover .orbitTrack i {
+  transform: translateX(-4cqw);
+}
+
+/* ═════ MONOLITH ═════ */
+.monolith {
+  background: linear-gradient(180deg, #c4c1b9 0%, #b9b6ae 62%, #a9a69e 62%, #a9a69e 100%);
+  color: #141414;
+}
+
+.monoLabel {
+  position: absolute;
+  top: 6cqw;
+  left: 4cqw;
+  font-size: 4.2cqw;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+}
+
+.monoPlan {
+  position: absolute;
+  top: 6.6cqw;
+  right: 4cqw;
+  font-family: var(--font-mono);
+  font-size: max(9px, 1.3cqw);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.slabs {
+  position: absolute;
+  inset: 0 0 38% 0;
+}
+
+.slab {
+  position: absolute;
+  bottom: 0;
+  left: var(--x);
+  width: var(--w);
+  height: var(--h);
+  background: linear-gradient(90deg, #1b1b1b 0%, #121212 70%, #0b0b0b 100%);
+  transform: translateX(calc(var(--lx) * var(--depth) * -0.8cqw));
+  transition: transform 0.9s var(--ease-out);
+}
+
+.shadow {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 32cqw;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.55), rgba(20, 20, 20, 0));
+  transform-origin: top left;
+  transform: skewX(calc(-38deg + var(--lx) * 30deg)) scaleY(0.45);
+  transition: transform 0.9s var(--ease-out);
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(20, 20, 20, 0.45);
+}
+
+.dim {
+  position: absolute;
+  left: 18%;
+  right: 22%;
+  bottom: 9cqw;
+  height: 1px;
+  background: currentColor;
+  font-family: var(--font-mono);
+  font-size: max(9px, 1.3cqw);
+}
+
+.dim::before,
+.dim::after {
+  content: '';
+  position: absolute;
+  top: -1cqw;
+  width: 1px;
+  height: 2cqw;
+  background: currentColor;
+}
+
+.dim::before {
+  left: 0;
+}
+
+.dim::after {
+  right: 0;
+}
+
+.dim span {
+  position: absolute;
+  left: 50%;
+  bottom: 1cqw;
+  transform: translateX(-50%);
+}
+
+/* ═════ PULSE ═════ */
+.pulse {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 4cqw;
+  padding: 9cqw 6cqw 8cqw;
+  background: #161412;
+  color: #f4f5f0;
+}
+
+.pulseHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.pulseLogo {
+  font-weight: 600;
+  font-size: 6cqw;
+  letter-spacing: -0.04em;
+}
+
+.pulseRange {
+  font-family: var(--font-mono);
+  font-size: max(9px, 2.6cqw);
+  color: #8f8a84;
+  text-transform: uppercase;
+}
+
+.pulseKpi {
+  display: flex;
+  align-items: baseline;
+  gap: 3cqw;
+  flex-wrap: wrap;
+}
+
+.pulseKpiLabel {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: max(9px, 2.6cqw);
+  color: #8f8a84;
+  text-transform: uppercase;
+}
+
+.pulseKpiValue {
+  font-size: 15cqw;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+.pulseKpiDelta {
+  padding: 0.6cqw 1.6cqw;
+  background: #ff5a1f;
+  color: #161412;
+  font-family: var(--font-mono);
+  font-size: max(9px, 2.8cqw);
+}
+
+.pulseChart {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: end;
+  gap: 1.4cqw;
+  border-bottom: 1px solid #3a3530;
+  min-height: 30cqw;
+}
+
+.bar {
+  height: var(--a);
+  background: #3a3530;
+  transition:
+    height 0.9s var(--ease-out),
+    background-color 0.5s;
+  transition-delay: calc(var(--i) * 30ms);
+}
+
+.bar:nth-child(9) {
+  background: #ff5a1f;
+}
+
+:global(.project-card):hover .bar {
+  height: var(--b);
+}
+
+.pulseLine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 70%;
+  overflow: visible;
+}
+
+.pulseLine path {
+  fill: none;
+  stroke: #ff5a1f;
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.4s var(--ease-out);
+}
+
+:global(.project-card):hover .pulseLine path,
+:global(.project-card):focus-within .pulseLine path {
+  stroke-dashoffset: 0;
+}
+
+.pulseNote {
+  position: absolute;
+  top: -2cqw;
+  left: 62%;
+  padding: 1cqw 1.6cqw;
+  border: 1px solid #ff5a1f;
+  color: #ff5a1f;
+  font-family: var(--font-mono);
+  font-size: max(8px, 2.2cqw);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Static compositions inside the modal show their "hover" state */
+:global(.preview-static) .orbitPanel {
+  transform: none;
+}
+
+:global(.preview-static) .pulseLine path {
+  stroke-dashoffset: 0;
+}

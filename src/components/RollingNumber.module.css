@@ -1,0 +1,29 @@
+.number {
+  display: inline-flex;
+  font-variant-numeric: tabular-nums;
+}
+
+.slot {
+  display: inline-block;
+  height: 1.15em;
+  line-height: 1.15;
+  overflow: hidden;
+}
+
+.strip {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+  transition: transform 1.6s var(--ease-out);
+  transition-delay: calc(var(--i) * 120ms + 200ms);
+}
+
+:global(.is-in) .strip {
+  transform: translateY(calc(var(--n) * -1.15em));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip {
+    transform: translateY(calc(var(--n) * -1.15em));
+  }
+}

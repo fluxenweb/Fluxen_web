@@ -1,0 +1,105 @@
+/*
+ * Reveal system. Components add `.is-in` once they enter the viewport.
+ * Every effect resolves to its final state under prefers-reduced-motion.
+ */
+
+/* Line mask: text rises out of a clipped line */
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+.line__inner {
+  display: block;
+  transform: translate3d(0, 108%, 0) skewY(4deg);
+  transform-origin: left top;
+  transition: transform 1.1s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms + var(--delay, 0ms));
+  will-change: transform;
+}
+
+.is-in .line__inner {
+  transform: none;
+}
+
+/* Soft rise for supporting copy */
+.rise {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 80ms + var(--delay, 0ms));
+}
+
+.is-in .rise,
+.rise.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hairline that draws itself */
+.rule {
+  display: block;
+  height: 1px;
+  background: var(--line-strong);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.4s var(--ease-in-out);
+  transition-delay: calc(var(--i, 0) * 70ms + var(--delay, 0ms));
+}
+
+.is-in .rule,
+.rule.is-in {
+  transform: none;
+}
+
+/* Clip-path wipe for media */
+.wipe {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.3s var(--ease-in-out);
+  transition-delay: var(--delay, 0ms);
+}
+
+.is-in .wipe,
+.wipe.is-in {
+  clip-path: inset(0 0 0 0);
+}
+
+@keyframes blink {
+  0%,
+  49% { opacity: 1; }
+  50%,
+  100% { opacity: 0; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line__inner,
+  .rise,
+  .rule,
+  .wipe {
+    transform: none !important;
+    opacity: 1 !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

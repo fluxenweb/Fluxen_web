@@ -1,0 +1,61 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 24px var(--gutter);
+  background: var(--bg);
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1s var(--ease-in-out);
+}
+
+.loader[data-phase='leaving'] {
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+}
+
+.top,
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+}
+
+.center {
+  align-self: end;
+  display: grid;
+  gap: 20px;
+  padding-bottom: 6vh;
+}
+
+.count {
+  font-size: clamp(5rem, 22vw, 20rem);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.07em;
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  position: relative;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.bar {
+  position: absolute;
+  inset: -0.5px 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.loader[data-phase='leaving'] .center {
+  transform: translateY(-6vh);
+  opacity: 0;
+  transition:
+    transform 0.9s var(--ease-in-out),
+    opacity 0.6s;
+}

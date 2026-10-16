@@ -1,0 +1,85 @@
+.glyph {
+  width: 56px;
+  height: 56px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  overflow: visible;
+}
+
+.glyph * {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 0.8s var(--ease-out),
+    stroke-dashoffset 1s var(--ease-out),
+    fill 0.4s,
+    stroke 0.4s;
+}
+
+.fillAccent {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.fillAccentRect {
+  transition: fill 0.4s;
+}
+
+.accentStroke {
+  stroke: var(--accent);
+}
+
+.thin {
+  stroke-opacity: 0.5;
+}
+
+.dash {
+  stroke-dasharray: 4 5;
+}
+
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.traveller {
+  offset-path: path('M4 32 C 14 8, 22 8, 32 32 S 50 56, 60 32');
+  offset-distance: 0%;
+  transition: offset-distance 1.2s var(--ease-in-out);
+}
+
+/* Active state: the parent row sets data-active */
+:global([data-active]) .dash {
+  transform: rotate(90deg);
+}
+
+:global([data-active]) .draw {
+  animation: draw 1.2s var(--ease-out);
+}
+
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+:global([data-active]) .left {
+  transform: translateX(-4px);
+}
+
+:global([data-active]) .right {
+  transform: translateX(4px);
+}
+
+:global([data-active]) .handle {
+  transform: translateY(-4px);
+}
+
+:global([data-active]) .fillAccentRect {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+:global([data-active]) .traveller {
+  offset-distance: 100%;
+}

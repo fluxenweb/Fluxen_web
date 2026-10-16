@@ -1,0 +1,81 @@
+.wrap {
+  position: relative;
+  padding: 0 0 28px 36px;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 3px;
+  touch-action: pan-y;
+}
+
+.field span {
+  aspect-ratio: 1;
+  background: var(--surface-2);
+}
+
+.field .target {
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--accent);
+}
+
+.callout {
+  position: absolute;
+  left: calc(36px + (100% - 36px) * var(--x) / 100);
+  top: calc((100% - 28px) * var(--y) / 100);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  color: var(--fg);
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(14px, -50%);
+}
+
+.calloutLine {
+  width: 44px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.calloutText {
+  padding: 6px 10px;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+}
+
+.axis {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.axisX {
+  left: 36px;
+  right: 0;
+  bottom: 4px;
+}
+
+.axisY {
+  top: 0;
+  bottom: 28px;
+  left: 0;
+  flex-direction: column;
+}
+
+@media (max-width: 760px) {
+  .callout {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: -18px;
+    transform: none;
+  }
+
+  .calloutLine {
+    display: none;
+  }
+}
