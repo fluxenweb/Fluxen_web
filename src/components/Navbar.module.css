@@ -33,7 +33,12 @@
 
 .primary {
   position: relative;
-  grid-column: 5 / span 5;
+  grid-column: 4 / span 5;
+}
+
+.lang {
+  grid-column: 9 / span 2;
+  justify-self: end;
 }
 
 .list {
@@ -193,7 +198,7 @@ button:hover .rollB {
 
 @media (max-width: 1100px) {
   .primary {
-    grid-column: 4 / span 6;
+    grid-column: 3 / span 6;
   }
 }
 
@@ -208,14 +213,18 @@ button:hover .rollB {
   }
 
   .inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
   }
 
   .brand {
     grid-column: 1;
   }
 
-  .toggle {
+  .lang {
     grid-column: 2;
+  }
+
+  .toggle {
+    grid-column: 3;
   }
 }

@@ -7,7 +7,7 @@ const ROWS = 14;
 const TARGET = 6 * COLS + 6;
 
 /** A field of pixels. Move across it and each cell flashes, then settles. One pixel is always lit. */
-export default function PixelField() {
+export default function PixelField({ callout }) {
   const ref = useRef(null);
   const last = useRef(-1);
 
@@ -41,7 +41,7 @@ export default function PixelField() {
       </div>
       <span className={`${styles.callout} mono`} style={{ '--x': (6.5 / COLS) * 100, '--y': (6.5 / ROWS) * 100 }}>
         <span className={styles.calloutLine} />
-        <span className={styles.calloutText}>1 px off? You&rsquo;d notice.</span>
+        <span className={styles.calloutText}>{callout}</span>
       </span>
       <span className={`${styles.axis} ${styles.axisX} mono`}>
         <span>000</span>

@@ -3,6 +3,11 @@
   font-variant-numeric: tabular-nums;
 }
 
+.gap {
+  display: inline-block;
+  width: 0.24em;
+}
+
 .slot {
   display: inline-block;
   height: 1.15em;

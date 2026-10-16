@@ -15,7 +15,7 @@
   --line-strong: #2c3150;
   --glow: rgba(73, 81, 252, 0.45);
 
-  --font-sans: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Space Grotesk Variable', 'Space Grotesk', 'Geist Cyrillic', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   --gutter: clamp(16px, 3.2vw, 44px);

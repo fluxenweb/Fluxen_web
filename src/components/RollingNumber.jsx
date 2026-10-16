@@ -8,6 +8,8 @@ export default function RollingNumber({ value, className = '' }) {
     <span className={`${styles.number} ${className}`.trim()} aria-label={value}>
       {value.split('').map((char, i) => {
         const target = DIGITS.indexOf(char);
+        // Group separators get a fixed gap so 4 990 000 reads clearly at any size.
+        if (char === ' ') return <span key={i} className={styles.gap} />;
         if (target < 0) return <span key={i}>{char}</span>;
         return (
           <span key={i} className={styles.slot} aria-hidden="true">

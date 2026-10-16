@@ -1,31 +1,13 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Reveal from './Reveal';
 import { useScrollProgress } from '../hooks/useScrollProgress';
+import { useLocale } from '../i18n/LocaleContext';
 import styles from './Manifesto.module.css';
 
-const LINES = [
-  { text: 'Good design', align: 'l0' },
-  { text: 'gets attention.', align: 'l1' },
-  { text: 'Great digital', align: 'l2' },
-  { text: 'experiences', align: 'l3' },
-  { text: 'make people', align: 'l4' },
-  { text: 'remember.', align: 'l5' },
-];
-
-const PRINCIPLES = [
-  { a: 'Clarity', b: 'over clutter', note: 'If it does not help someone understand, it goes.' },
-  { a: 'Purpose', b: 'over decoration', note: 'Every visual choice must earn its place.' },
-  { a: 'Performance', b: 'by design', note: 'Speed is planned in the first sketch, not patched in at the end.' },
-  { a: 'Details', b: 'matter', note: 'The last 5% is the part people feel.' },
-];
-
-const words = [];
-LINES.forEach((line, li) =>
-  line.text.split(' ').forEach((w) => words.push({ w, li })),
-);
-const TOTAL = words.length;
-
 export default function Manifesto() {
+  const { t } = useLocale();
+  const { lines: LINES, principles: PRINCIPLES } = t.manifesto;
+  const TOTAL = useMemo(() => LINES.reduce((n, line) => n + line.text.split(' ').length, 0), [LINES]);
   const track = useRef(null);
   const [pct, setPct] = useState(0);
   useScrollProgress(track, {
@@ -40,8 +22,8 @@ export default function Manifesto() {
       <div ref={track} className={styles.track} style={{ '--n': TOTAL }}>
         <div className={`${styles.sticky} shell`}>
           <div className={`${styles.meta} mono`} aria-hidden="true">
-            <span>(Manifesto)</span>
-            <span className={styles.metaMid}>Studio / Philosophy</span>
+            <span>{t.manifesto.label}</span>
+            <span className={styles.metaMid}>{t.manifesto.mid}</span>
             <span className={styles.metaPct}>
               <span className={styles.meter}>
                 <span />
@@ -68,7 +50,7 @@ export default function Manifesto() {
 
           <p className={`${styles.folio} mono`} aria-hidden="true">
             <span>FluxenWeb</span>
-            <span>p. 03</span>
+            <span>{t.manifesto.folio}</span>
           </p>
         </div>
       </div>

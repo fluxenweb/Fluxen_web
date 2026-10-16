@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
-import { stages } from '../data/process';
 import Reveal from './Reveal';
 import Lines from './Lines';
 import { useScrollProgress } from '../hooks/useScrollProgress';
+import { useLocale } from '../i18n/LocaleContext';
 import styles from './Process.module.css';
 
 /* A single composition that evolves from scattered thought (01) to finished pixel (04). */
@@ -50,6 +50,8 @@ function StageVisual({ step }) {
 }
 
 export default function Process() {
+  const { t } = useLocale();
+  const { stages } = t.process;
   const timeline = useRef(null);
   const [reached, setReached] = useState(0);
   useScrollProgress(timeline, {
@@ -65,11 +67,10 @@ export default function Process() {
     <section className={`${styles.section} shell`} aria-labelledby="process-title">
       <Reveal as="header" className={styles.header}>
         <h2 id="process-title" className={`${styles.title} display-sm`}>
-          <Lines lines={['From first thought', 'to final pixel.']} />
+          <Lines lines={t.process.title} />
         </h2>
         <p className={`${styles.side} rise`} style={{ '--i': 2 }}>
-          Four stages, one continuous conversation. No hand-offs, no lost context, and something real to click through
-          early — not just a slide deck.
+          {t.process.side}
         </p>
       </Reveal>
 
@@ -78,13 +79,13 @@ export default function Process() {
           <span className={styles.fill} />
         </span>
         {stages.map((stage, i) => (
-          <li key={stage.index} className={styles.stage} data-reached={i < reached || undefined}>
+          <li key={i} className={styles.stage} data-reached={i < reached || undefined}>
             <span className={styles.node} aria-hidden="true" />
-            <span className={`${styles.index} mono`}>{stage.index}</span>
+            <span className={`${styles.index} mono`}>{String(i + 1).padStart(2, '0')}</span>
             <StageVisual step={i} />
             <h3 className={styles.stageTitle}>{stage.title}</h3>
             <p className={styles.text}>{stage.text}</p>
-            <ul className={`${styles.outputs} mono`} aria-label={`${stage.title} outputs`}>
+            <ul className={`${styles.outputs} mono`} aria-label={t.process.outputsLabel(stage.title)}>
               {stage.outputs.map((o) => (
                 <li key={o}>{o}</li>
               ))}

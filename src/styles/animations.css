@@ -7,8 +7,9 @@
 .line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.06em;
-  margin-bottom: -0.06em;
+  /* Extra room above caps so diacritics (Ё, Й) aren't clipped by the mask */
+  padding-block: 0.14em 0.06em;
+  margin-block: -0.14em -0.06em;
 }
 
 .line__inner {

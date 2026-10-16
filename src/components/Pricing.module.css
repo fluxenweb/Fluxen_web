@@ -1,0 +1,396 @@
+.section {
+  padding-block: var(--section-pad) calc(var(--section-pad) * 0.8);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 96px);
+}
+
+.kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 28px;
+  color: var(--muted);
+}
+
+.heading {
+  grid-column: 1 / span 8;
+}
+
+.lede {
+  grid-column: 9 / span 4;
+  max-width: 34ch;
+  color: var(--muted);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.45;
+}
+
+/* ─── Rows ─── */
+.list {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.row {
+  position: relative;
+  isolation: isolate;
+}
+
+.row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--surface);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.row:hover::before,
+.row:focus-within::before {
+  transform: none;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  align-items: center;
+  min-height: clamp(120px, 10vw, 160px);
+  padding: 24px 0;
+}
+
+.num {
+  grid-column: 1 / span 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-left: 12px;
+  color: var(--muted);
+  transition: color 0.4s;
+}
+
+.row:hover .num {
+  color: var(--accent-bright);
+}
+
+.tag {
+  padding: 4px 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  white-space: nowrap;
+  box-shadow: 0 0 18px -4px var(--glow);
+}
+
+.info {
+  grid-column: 2 / span 6;
+  display: grid;
+  gap: 10px;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.row:hover .info {
+  transform: translateX(clamp(6px, 1vw, 16px));
+}
+
+.title {
+  font-size: clamp(26px, 3vw, 46px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.text {
+  max-width: 48ch;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.price {
+  grid-column: 8 / span 4;
+  justify-self: end;
+  text-align: right;
+}
+
+.priceVisual {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.from,
+.currency {
+  color: var(--muted);
+}
+
+.amount {
+  font-size: clamp(28px, 3.2vw, 50px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  transition: color 0.4s;
+}
+
+.row:hover .amount {
+  color: var(--accent-bright);
+}
+
+.go {
+  grid-column: 12 / span 1;
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-right: 12px;
+  border: 1px solid var(--line-strong);
+  transition:
+    background-color 0.4s,
+    border-color 0.4s,
+    color 0.4s;
+}
+
+/* The whole row is the click target */
+.go::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.go svg {
+  transition: transform 0.5s var(--ease-out);
+}
+
+.row:hover .go,
+.go:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.row:hover .go svg {
+  transform: rotate(45deg);
+}
+
+.go:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Featured plan: lit by the brand glow */
+.row[data-featured] {
+  margin-block: 8px;
+}
+
+.row[data-featured]::before {
+  transform: none;
+  background:
+    radial-gradient(120% 140% at 100% 50%, rgba(73, 81, 252, 0.22), transparent 60%),
+    var(--surface);
+  border: 1px solid rgba(110, 112, 255, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(91, 92, 255, 0.08),
+    0 30px 80px -40px rgba(73, 81, 252, 0.6);
+}
+
+.row[data-featured] :global(.rule) {
+  opacity: 0;
+}
+
+.row[data-featured] .amount {
+  color: var(--fg);
+}
+
+/* ─── After the list ─── */
+.footer {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 20px;
+  padding-top: 28px;
+}
+
+.note {
+  grid-column: 1 / span 6;
+  max-width: 60ch;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+.actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 20px;
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 0 28px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 500;
+  font-size: 17px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 18px 40px -18px var(--glow);
+  transition:
+    gap 0.4s var(--ease-out),
+    color 0.3s;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--fg);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.cta:hover {
+  gap: 18px;
+  color: var(--bg);
+}
+
+.cta:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.telegram {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 17px;
+  background: linear-gradient(var(--accent-bright), var(--accent-bright)) left bottom / 0 1px no-repeat;
+  transition:
+    background-size 0.5s var(--ease-out),
+    color 0.3s;
+}
+
+.telegram:hover {
+  color: var(--accent-bright);
+  background-size: 100% 1px;
+}
+
+.footnote {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+.dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(91, 92, 255, 0.2);
+}
+
+/* ─── Tablet ─── */
+@media (max-width: 1024px) {
+  .heading,
+  .lede {
+    grid-column: 1 / -1;
+  }
+
+  .lede {
+    margin-top: 24px;
+  }
+
+  .info {
+    grid-column: 2 / span 6;
+  }
+
+  .price {
+    grid-column: 8 / span 4;
+  }
+
+  .note {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 760px) {
+  .header,
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .inner {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'num num'
+      'info info'
+      'price go';
+    row-gap: 14px;
+    padding: 24px 0;
+  }
+
+  .row[data-featured] .inner {
+    padding-inline: 16px;
+  }
+
+  .num {
+    grid-area: num;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .info {
+    grid-area: info;
+  }
+
+  .row:hover .info {
+    transform: none;
+  }
+
+  .price {
+    grid-area: price;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .amount {
+    font-size: clamp(26px, 8vw, 34px);
+  }
+
+  .go {
+    grid-area: go;
+    margin-right: 0;
+    width: 48px;
+    height: 48px;
+  }
+
+  .row[data-featured] .go {
+    margin-right: 0;
+  }
+
+  .cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

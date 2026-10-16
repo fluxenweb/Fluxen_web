@@ -2,15 +2,17 @@ import { useCallback, useEffect, useState } from 'react';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Projects from './components/Projects';
+import Pricing from './components/Pricing';
 import Services from './components/Services';
 import Manifesto from './components/Manifesto';
 import Process from './components/Process';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { useLocale } from './i18n/LocaleContext';
 
 export default function App() {
+  const { t } = useLocale();
   const [ready, setReady] = useState(false);
   const onLoaded = useCallback(() => setReady(true), []);
 
@@ -29,13 +31,13 @@ export default function App() {
   return (
     <>
       <a className="skip-link" href="#main">
-        Skip to content
+        {t.skip}
       </a>
       <div className="atmosphere" aria-hidden="true">
         <div className="atmosphere__grid">
           {Array.from({ length: 12 }, (_, i) => (
             <span key={i} />
-          ))}
+          ))} 
         </div>
         <div className="atmosphere__grain" />
       </div>
@@ -43,7 +45,7 @@ export default function App() {
       <Navbar />
       <main id="main" tabIndex={-1}>
         <Hero ready={ready} />
-        <Projects />
+        <Pricing />
         <Services />
         <div id="studio">
           <Manifesto />

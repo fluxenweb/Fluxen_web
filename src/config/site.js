@@ -1,24 +1,17 @@
 /**
- * Site-wide configuration.
- * Replace the placeholder values below with the studio's real details.
+ * Site-wide configuration: the studio's contact details and profiles.
  */
 export const site = {
   name: 'FluxenWeb',
-  // TODO: replace with the studio's real inbox.
-  email: 'hello@fluxenweb.com',
-  // TODO: replace with the studio's real profile URLs.
+  email: 'fluxenweb@gmail.com',
+  telegram: 'https://t.me/fluxen_web',
   socials: [
-    { label: 'Instagram', href: 'https://www.instagram.com/' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-    { label: 'Dribbble', href: 'https://dribbble.com/' },
-    { label: 'GitHub', href: 'https://github.com/' },
+    { label: 'Telegram', href: 'https://t.me/fluxen_web' },
+    { label: 'Instagram', href: 'https://www.instagram.com/fluxen_web/' },
+    { label: 'GitHub', href: 'https://github.com/fluxenweb' },
   ],
-  availability: 'Booking projects for Q1 2027',
+  // The availability line is translated: edit it in src/i18n/en.js and ru.js.
 };
 
-export const navLinks = [
-  { id: 'work', label: 'Work' },
-  { id: 'services', label: 'Services' },
-  { id: 'studio', label: 'Studio' },
-  { id: 'contact', label: 'Contact' },
-];
+// Section ids; labels are translated in src/i18n.
+export const navLinks = ['pricing', 'services', 'studio', 'contact'];

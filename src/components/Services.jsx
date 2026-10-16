@@ -4,9 +4,12 @@ import { services } from '../data/services';
 import ServiceGlyph from './ServiceGlyph';
 import Reveal from './Reveal';
 import Lines from './Lines';
+import { useLocale } from '../i18n/LocaleContext';
 import styles from './Services.module.css';
 
 function ServiceRow({ service, open, onToggle, index }) {
+  const { t } = useLocale();
+  const copy = t.services.items[service.id];
   const [hover, setHover] = useState(false);
   const panelId = `service-${service.id}`;
   const active = open || hover;
@@ -31,8 +34,8 @@ function ServiceRow({ service, open, onToggle, index }) {
           onClick={onToggle}
         >
           <span className={`${styles.num} mono`}>{service.index}</span>
-          <span className={styles.title}>{service.title}</span>
-          <span className={styles.short}>{service.short}</span>
+          <span className={styles.title}>{copy.title}</span>
+          <span className={styles.short}>{copy.short}</span>
           <span className={styles.glyph}>
             <ServiceGlyph name={service.glyph} />
           </span>
@@ -41,12 +44,12 @@ function ServiceRow({ service, open, onToggle, index }) {
           </span>
         </button>
       </h3>
-      <div id={panelId} className={styles.panel} role="region" aria-label={service.title}>
+      <div id={panelId} className={styles.panel} role="region" aria-label={copy.title}>
         <div className={styles.panelInner}>
           <div className={styles.panelGrid}>
-            <p className={styles.detail}>{service.detail}</p>
+            <p className={styles.detail}>{copy.detail}</p>
             <ul className={styles.deliverables}>
-              {service.deliverables.map((d) => (
+              {copy.deliverables.map((d) => (
                 <li key={d}>
                   <span className={styles.tick} aria-hidden="true" />
                   {d}
@@ -61,18 +64,19 @@ function ServiceRow({ service, open, onToggle, index }) {
 }
 
 export default function Services() {
+  const { t } = useLocale();
+  const s = t.services;
   const [openId, setOpenId] = useState(services[0].id);
 
   return (
     <section id="services" className={`${styles.section} shell`} aria-labelledby="services-title">
       <Reveal as="header" className={styles.header}>
-        <p className={`${styles.kicker} mono rise`}>Services / 06 disciplines</p>
+        <p className={`${styles.kicker} mono rise`}>{s.kicker}</p>
         <h2 id="services-title" className={`${styles.heading2} display`}>
-          <Lines lines={['Built with', 'intent.']} />
+          <Lines lines={s.title} />
         </h2>
         <p className={`${styles.lede} rise`} style={{ '--i': 2 }}>
-          One studio from first workshop to final deploy. Pick a single discipline or the whole stack — every
-          engagement is shaped around what the project actually needs.
+          {s.lede}
         </p>
       </Reveal>
 

@@ -199,6 +199,17 @@
   }
 }
 
+/* Russian lines run longer; scale the statement so every line still fits */
+:global(html[lang='ru']) .statement {
+  font-size: clamp(2.4rem, min(7.6vw, 12.5svh), 9rem);
+}
+
+@media (max-width: 760px) {
+  :global(html[lang='ru']) .statement {
+    font-size: 8vw;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .track {
     height: auto;

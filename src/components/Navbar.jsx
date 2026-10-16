@@ -2,12 +2,14 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { ArrowUpRight } from 'lucide-react';
 import Wordmark from './Wordmark';
 import MobileMenu from './MobileMenu';
+import LanguageSwitch from './LanguageSwitch';
+import { useLocale } from '../i18n/LocaleContext';
 import { navLinks } from '../config/site';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { useScrolled } from '../hooks/useScrolled';
 import styles from './Navbar.module.css';
 
-const ids = navLinks.map((l) => l.id);
+const ids = navLinks;
 
 /** Text that rolls up to a duplicate of itself on hover. */
 export function Roll({ children }) {
@@ -22,6 +24,7 @@ export function Roll({ children }) {
 }
 
 export default function Navbar() {
+  const { t, locale } = useLocale();
   const scrolled = useScrolled(24);
   const active = useActiveSection(ids);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,7 +43,8 @@ export default function Navbar() {
     setIndicator({ x: link.offsetLeft, w: link.offsetWidth, visible: true });
   }, [active]);
 
-  useLayoutEffect(measure, [measure]);
+  // Re-measure when the language changes, since link widths change with it.
+  useLayoutEffect(measure, [measure, locale]);
   useEffect(() => {
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
@@ -50,24 +54,24 @@ export default function Navbar() {
     <>
       <header className={styles.nav} data-scrolled={scrolled || undefined}>
         <div className={`${styles.inner} shell`}>
-          <a href="#top" className={styles.brand} aria-label="FluxenWeb — back to top">
+          <a href="#top" className={styles.brand} aria-label={t.nav.home}>
             <Wordmark />
           </a>
 
-          <nav aria-label="Primary" className={styles.primary}>
+          <nav aria-label={t.nav.primary} className={styles.primary}>
             <ul ref={listRef} className={styles.list}>
-              {navLinks.map((link, i) => (
-                <li key={link.id}>
+              {navLinks.map((id, i) => (
+                <li key={id}>
                   <a
-                    href={`#${link.id}`}
-                    data-id={link.id}
+                    href={`#${id}`}
+                    data-id={id}
                     className={styles.link}
-                    aria-current={active === link.id ? 'location' : undefined}
+                    aria-current={active === id ? 'location' : undefined}
                   >
                     <span className={`${styles.index} mono`} aria-hidden="true">
                       0{i + 1}
                     </span>
-                    <Roll>{link.label}</Roll>
+                    <Roll>{t.nav.links[id]}</Roll>
                   </a>
                 </li>
               ))}
@@ -82,8 +86,10 @@ export default function Navbar() {
             />
           </nav>
 
+          <LanguageSwitch className={styles.lang} />
+
           <a href="#contact" className={`${styles.cta} mono`}>
-            <Roll>Let&rsquo;s talk</Roll>
+            <Roll>{t.nav.cta}</Roll>
             <ArrowUpRight size={15} strokeWidth={1.6} aria-hidden="true" className={styles.ctaIcon} />
           </a>
 
@@ -94,7 +100,7 @@ export default function Navbar() {
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen(true)}
           >
-            <span>Menu</span>
+            <span>{t.nav.menu}</span>
             <span className={styles.burger} aria-hidden="true">
               <span />
               <span />

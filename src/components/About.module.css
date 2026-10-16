@@ -20,6 +20,10 @@
   padding-left: calc(100% / 8 * 3);
 }
 
+:global(html[lang='ru']) .indent {
+  padding-left: calc(100% / 8 * 2);
+}
+
 .field {
   grid-column: 9 / span 4;
   padding-bottom: 0.4em;

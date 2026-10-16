@@ -2,12 +2,14 @@ import { useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import Wordmark from './Wordmark';
 import { navLinks, site } from '../config/site';
+import { useLocale } from '../i18n/LocaleContext';
 import { useFocusTrap } from '../hooks/useFocusTrap';
 import { useLockBody } from '../hooks/useLockBody';
 import { scrollToId } from '../utils/scroll';
 import styles from './MobileMenu.module.css';
 
 export default function MobileMenu({ open, onClose, active }) {
+  const { t } = useLocale();
   const panel = useRef(null);
   const closeBtn = useRef(null);
   useFocusTrap(panel, open, onClose);
@@ -28,7 +30,7 @@ export default function MobileMenu({ open, onClose, active }) {
       data-open={open || undefined}
       role="dialog"
       aria-modal="true"
-      aria-label="Site menu"
+      aria-label={t.nav.menuLabel}
       inert={open ? undefined : ''}
       onTransitionEnd={(e) => {
         if (open && e.target === panel.current) closeBtn.current?.focus();
@@ -39,23 +41,23 @@ export default function MobileMenu({ open, onClose, active }) {
           <Wordmark />
         </a>
         <button ref={closeBtn} type="button" className={`${styles.close} mono`} onClick={onClose}>
-          <span>Close</span>
+          <span>{t.nav.close}</span>
           <span className={styles.x} aria-hidden="true" />
         </button>
       </div>
 
-      <nav aria-label="Mobile" className={`${styles.body} shell`}>
+      <nav aria-label={t.nav.mobile} className={`${styles.body} shell`}>
         <ul className={styles.list}>
-          {navLinks.map((link, i) => (
-            <li key={link.id} className={styles.item} style={{ '--i': i }}>
+          {navLinks.map((id, i) => (
+            <li key={id} className={styles.item} style={{ '--i': i }}>
               <a
-                href={`#${link.id}`}
+                href={`#${id}`}
                 className={styles.link}
-                aria-current={active === link.id ? 'location' : undefined}
-                onClick={(e) => go(e, link.id)}
+                aria-current={active === id ? 'location' : undefined}
+                onClick={(e) => go(e, id)}
               >
                 <span className={`${styles.num} mono`}>0{i + 1}</span>
-                <span className={styles.label}>{link.label}</span>
+                <span className={styles.label}>{t.nav.links[id]}</span>
                 <ArrowUpRight className={styles.arrow} size={28} strokeWidth={1.2} aria-hidden="true" />
               </a>
             </li>
@@ -78,7 +80,7 @@ export default function MobileMenu({ open, onClose, active }) {
         </ul>
         <p className={`${styles.status} mono`}>
           <span className={styles.dot} aria-hidden="true" />
-          {site.availability}
+          {t.availability}
         </p>
       </div>
     </div>

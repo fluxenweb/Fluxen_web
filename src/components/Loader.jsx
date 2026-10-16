@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { prefersReducedMotion } from '../hooks/useReducedMotion';
 import Wordmark from './Wordmark';
+import { useLocale } from '../i18n/LocaleContext';
 import styles from './Loader.module.css';
 
 const MIN_MS = 1100;
@@ -8,6 +9,7 @@ const MAX_MS = 2600;
 
 /** Short entrance: counts to 100 while fonts load, then lifts away to start the hero reveal. */
 export default function Loader({ onDone }) {
+  const { t } = useLocale();
   const [phase, setPhase] = useState(() => (prefersReducedMotion() ? 'done' : 'loading'));
   const count = useRef(null);
   const bar = useRef(null);
@@ -56,7 +58,7 @@ export default function Loader({ onDone }) {
     <div className={styles.loader} data-phase={phase} aria-hidden="true">
       <div className={`${styles.top} mono`}>
         <Wordmark />
-        <span>Independent digital studio</span>
+        <span>{t.loader.studio}</span>
       </div>
       <div className={styles.center}>
         <span className={styles.count} ref={count}>
@@ -67,8 +69,8 @@ export default function Loader({ onDone }) {
         </span>
       </div>
       <div className={`${styles.bottom} mono`}>
-        <span>Loading dimension</span>
-        <span>We build what&rsquo;s next.</span>
+        <span>{t.loader.loading}</span>
+        <span>{t.loader.slogan}</span>
       </div>
     </div>
   );

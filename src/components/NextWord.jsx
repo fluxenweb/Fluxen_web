@@ -7,7 +7,7 @@ import styles from './NextWord.module.css';
  * circular mask that follows the pointer. Without a pointer (touch, idle) the
  * mask drifts on its own along a slow Lissajous path.
  */
-export default function NextWord() {
+export default function NextWord({ text }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -57,8 +57,8 @@ export default function NextWord() {
 
   return (
     <span ref={ref} className={styles.word}>
-      <span className={styles.outline}>NEXT.</span>
-      <span className={styles.fill}>NEXT.</span>
+      <span className={styles.outline}>{text}</span>
+      <span className={styles.fill}>{text}</span>
       <span className={styles.caret} />
     </span>
   );
