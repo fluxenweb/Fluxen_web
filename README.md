@@ -20,7 +20,7 @@ npm run lint
 ## Languages
 
 English and Russian, switched with the EN / RU control in the header. The first visit follows the browser language; the choice is then remembered. `?lang=ru` or `?lang=en` in the URL forces a language (handy for sharing links).
-Space Grotesk has no Cyrillic, so Russian text renders in Geist (`src/styles/fonts.css`).
+Both languages use Geist (with Geist Mono for small labels), which covers Latin and Cyrillic.
 
 ## Notes
 

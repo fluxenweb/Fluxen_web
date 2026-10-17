@@ -12,7 +12,7 @@
   font-weight: 600;
   font-size: clamp(3.6rem, 13.2vw, 15rem);
   line-height: 0.84;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
 }
 
@@ -469,11 +469,11 @@
   }
 
   .indent {
-    padding-left: 12vw;
+    padding-left: 8vw;
   }
 
   .title {
-    font-size: 16.5vw;
+    font-size: 15.5vw;
   }
 
   .aside {

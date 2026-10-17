@@ -65,7 +65,7 @@
   font-weight: 600;
   font-size: clamp(2.6rem, min(8.6vw, 12.5svh), 10rem);
   line-height: 0.9;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
 }
 

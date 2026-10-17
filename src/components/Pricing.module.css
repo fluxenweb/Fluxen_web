@@ -1,5 +1,5 @@
 .section {
-  padding-block: var(--section-pad) calc(var(--section-pad) * 0.8);
+  padding-block: var(--section-pad) clamp(24px, 3vw, 40px);
 }
 
 .header {

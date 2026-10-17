@@ -160,7 +160,7 @@
   font-weight: 600;
   font-size: clamp(4.2rem, min(14.6vw, 20.5svh), 16rem);
   line-height: 0.84;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
   margin-block: clamp(20px, 3vh, 48px) clamp(24px, 3.4vh, 44px);
 }
@@ -186,6 +186,19 @@
 
 .l3 {
   padding-left: calc(100% / 12 * 5);
+}
+
+/* "СЛЕДУЕТ." is longer than "NEXT.", so the Russian line starts further left */
+@media (min-width: 1025px) {
+  :global(html[lang='ru']) .l3 {
+    padding-left: calc(100% / 12 * 3);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  :global(html[lang='ru']) .l3 {
+    padding-left: calc(100% / 12 * 2);
+  }
 }
 
 /* ─── Bottom row ─── */
@@ -350,7 +363,7 @@
 
   .title {
     font-size: 19vw;
-    letter-spacing: -0.06em;
+    letter-spacing: -0.045em;
     margin-block: 24px 28px;
   }
 

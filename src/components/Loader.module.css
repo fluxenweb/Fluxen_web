@@ -34,7 +34,7 @@
   font-size: clamp(5rem, 22vw, 20rem);
   font-weight: 600;
   line-height: 0.8;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.05em;
   font-variant-numeric: tabular-nums;
 }
 

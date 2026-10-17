@@ -8,7 +8,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import styles from './Contact.module.css';
 
 // Stored as stable ids so a language switch mid-form keeps the selection.
-const PROJECT_TYPES = ['website', 'landing', 'ecommerce', 'mobile', 'app', 'motion', 'other'];
+const PROJECT_TYPES = ['bot', 'website', 'landing', 'ecommerce', 'mobile', 'app', 'motion', 'other'];
 const BUDGETS = ['s', 'm', 'l', 'xl', 'unsure'];
 const EMPTY = { name: '', email: '', company: '', type: '', budget: '', message: '' };
 const MIN_MESSAGE = 20;

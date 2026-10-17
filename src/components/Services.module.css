@@ -1,5 +1,6 @@
 .section {
-  padding-block: var(--section-pad);
+  /* Sits right after Pricing, so it needs only a short lead-in */
+  padding-block: clamp(40px, 4.5vw, 64px) var(--section-pad);
 }
 
 .header {

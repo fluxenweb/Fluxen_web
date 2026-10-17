@@ -15,7 +15,7 @@
   --line-strong: #2c3150;
   --glow: rgba(73, 81, 252, 0.45);
 
-  --font-sans: 'Space Grotesk Variable', 'Space Grotesk', 'Geist Cyrillic', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Geist Variable', 'Geist', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   --gutter: clamp(16px, 3.2vw, 44px);
@@ -53,7 +53,6 @@ body {
   font-family: var(--font-sans);
   font-size: 17px;
   line-height: 1.5;
-  font-feature-settings: 'ss01' on;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
@@ -182,7 +181,7 @@ canvas {
   font-weight: 600;
   font-size: clamp(3rem, 9.4vw, 10rem);
   line-height: 0.86;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
 }
 

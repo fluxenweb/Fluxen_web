@@ -109,7 +109,7 @@
   font-size: clamp(3rem, 15vw, 6rem);
   font-weight: 600;
   line-height: 0.95;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
 }
 

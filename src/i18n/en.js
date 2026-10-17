@@ -47,6 +47,10 @@ const en = {
     popular: 'Popular',
     discuss: (title) => `Discuss a project: ${title}`,
     plans: {
+      bot: {
+        title: 'Telegram bot',
+        text: 'Orders, bookings, payments and support right inside Telegram — working for you 24/7.',
+      },
       corporate: {
         title: 'Corporate website',
         text: 'A fast, polished site that builds trust and brings in new clients.',
@@ -183,6 +187,7 @@ const en = {
     optional: ' (optional)',
     placeholder: 'What are you building, who is it for, and when would you like to launch?',
     types: {
+      bot: 'Telegram bot',
       website: 'Website',
       landing: 'Landing page',
       ecommerce: 'E-commerce',
