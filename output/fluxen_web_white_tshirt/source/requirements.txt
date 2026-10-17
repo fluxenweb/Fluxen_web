@@ -1,0 +1,10 @@
+brotli==1.2.0
+fonttools==4.67.0
+numpy==2.5.4
+pillow==13.0.0
+pyembroidery==1.5.1
+scikit-image==0.26.0
+scipy==1.18.1
+shapely==2.2.0
+skia-pathops==0.9.2
+uharfbuzz==0.56.3

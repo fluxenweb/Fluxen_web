@@ -1,0 +1,229 @@
+{
+  "brand_font": {
+    "file": "geist-latin-wght-normal.woff2",
+    "name": "Geist Regular",
+    "wght": 600.0,
+    "label": "SUBSTITUTE: Geist SemiBold (wght 600) standing in for Block 2, which was not supplied"
+  },
+  "mono_font": {
+    "file": "geist-mono-latin-500-normal.woff",
+    "name": "Geist Mono Medium"
+  },
+  "front": {
+    "artwork_mm": {
+      "width": 95.0,
+      "height": 21.4
+    },
+    "logo_cap_height_mm": 11.94,
+    "logo_stroke_mm": 1.93,
+    "technique": "satin",
+    "bar_mm": [
+      0.0,
+      7.64,
+      18.05,
+      9.44
+    ],
+    "build": {
+      "jumps": 25,
+      "trims": 17,
+      "locks": 52
+    },
+    "validation": {
+      "file": "fluxen_web_white_front.dst",
+      "bytes": 6410,
+      "header": {
+        "LA": [
+          "FLUXEN_FRONT"
+        ],
+        "ST": [
+          "1930"
+        ],
+        "CO": [
+          "0"
+        ],
+        "+X": [
+          "477"
+        ],
+        "-X": [
+          "477"
+        ],
+        "+Y": [
+          "109"
+        ],
+        "-Y": [
+          "109"
+        ],
+        "AX": [
+          "-  294"
+        ],
+        "AY": [
+          "-   87"
+        ],
+        "MX": [
+          "+    0"
+        ],
+        "MY": [
+          "+    0"
+        ],
+        "PD": [
+          "******"
+        ],
+        "TC": [
+          "#111111,Black - text content and brand,"
+        ]
+      },
+      "decoded": {
+        "stitches": 1877,
+        "jump_records": 88,
+        "color_changes": 0,
+        "trims": 19,
+        "width_mm": 95.4,
+        "height_mm": 21.8,
+        "bounds": [
+          -477,
+          477,
+          -109,
+          109
+        ],
+        "max_stitch_mm": 4.0,
+        "min_stitch_mm": 0.31622776601683794,
+        "short_lt_0_3mm": 0
+      },
+      "pyembroidery": {
+        "stitches": 1877,
+        "jumps": 34,
+        "trims": 18,
+        "color_changes": 0
+      },
+      "header_consistent": true,
+      "stitch_records_match": true
+    }
+  },
+  "back": {
+    "artwork_mm": {
+      "width": 247.1,
+      "height": 235.4
+    },
+    "code": {
+      "em_mm": 7.7,
+      "advance_mm": 4.62,
+      "cap_height_mm": 5.47,
+      "x_height_mm": 4.1,
+      "line_pitch_mm": 13.0,
+      "width_mm": 247.1,
+      "technique": "bean (triple) run on glyph centrelines"
+    },
+    "brand": {
+      "cap_height_mm": 5.66,
+      "stroke_mm": 0.93,
+      "technique": "satin"
+    },
+    "tagline": {
+      "cap_height_mm": 4.75,
+      "stroke_mm": 0.8,
+      "technique": "satin"
+    },
+    "bar_mm": [
+      0.55,
+      215.0,
+      13.15,
+      216.4
+    ],
+    "build": {
+      "jumps": 349,
+      "trims": 174,
+      "locks": 706
+    },
+    "validation": {
+      "file": "fluxen_web_white_back.dst",
+      "bytes": 45359,
+      "header": {
+        "LA": [
+          "FLUXEN_BACK"
+        ],
+        "ST": [
+          "14599"
+        ],
+        "CO": [
+          "3"
+        ],
+        "+X": [
+          "1236"
+        ],
+        "-X": [
+          "1236"
+        ],
+        "+Y": [
+          "1178"
+        ],
+        "-Y": [
+          "1178"
+        ],
+        "AX": [
+          "+ 1226"
+        ],
+        "AY": [
+          "- 1171"
+        ],
+        "MX": [
+          "+    0"
+        ],
+        "MY": [
+          "+    0"
+        ],
+        "PD": [
+          "******"
+        ],
+        "TC": [
+          "#1e2f6b,Dark navy - HTML tags,",
+          "#3d7cc9,Light blue - attribute names,",
+          "#3e8f4a,Green - attribute values,",
+          "#111111,Black - text content and brand,"
+        ]
+      },
+      "decoded": {
+        "stitches": 13881,
+        "jump_records": 1064,
+        "color_changes": 3,
+        "trims": 179,
+        "width_mm": 247.2,
+        "height_mm": 235.6,
+        "bounds": [
+          -1236,
+          1236,
+          -1178,
+          1178
+        ],
+        "max_stitch_mm": 2.4698178070456938,
+        "min_stitch_mm": 0.282842712474619,
+        "short_lt_0_3mm": 19
+      },
+      "pyembroidery": {
+        "stitches": 13881,
+        "jumps": 539,
+        "trims": 175,
+        "color_changes": 3
+      },
+      "header_consistent": true,
+      "stitch_records_match": true
+    }
+  },
+  "threads": {
+    "navy": {
+      "name": "Dark navy - HTML tags",
+      "hex": "#1E2F6B"
+    },
+    "blue": {
+      "name": "Light blue - attribute names",
+      "hex": "#3D7CC9"
+    },
+    "green": {
+      "name": "Green - attribute values",
+      "hex": "#3E8F4A"
+    },
+    "black": {
+      "name": "Black - text content and brand",
+      "hex": "#111111"
+    }
+  }
+}
